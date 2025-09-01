@@ -20,7 +20,7 @@ Do your development work in `readme-website`, in the `dev` branch. Whenever you 
 
 ```bash
 docker build --tag readme-website-dev .
-yes | docker image prune
+docker image prune
 docker run --rm -ti --network host readme-website-dev:latest
 ```
 
