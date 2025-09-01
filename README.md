@@ -1,5 +1,8 @@
 NOTE: We are abandoning Windows support. If you are on Windows you need to download WSL.
 
+If you don't already have Docker on your computer go to their website and follow their setup instructions.
+NOTE: If you are on Windows using WSL make sure that you follow the additional instructions for WSL.
+
 The first time you get your dev environment set up, you'll want to run the following:
 
 ```bash
