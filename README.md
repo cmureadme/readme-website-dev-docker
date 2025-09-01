@@ -10,10 +10,10 @@ cd ..
 docker build --tag readme-website-dev .
 ```
 
-Now, to run a local dev server on `http://127.0.0.1:8000`, run:
+Now, to run a local dev server on `http://localhost:8000`, run:
 
 ```bash
-docker run --rm -ti --network host readme-website-dev:latest
+docker run --rm -ti -p 8000:8000 readme-website-dev:latest
 ```
 
 Do your development work in `readme-website`, in the `dev` branch. Whenever you want to run your updated code, run the following:
