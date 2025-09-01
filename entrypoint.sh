@@ -6,4 +6,4 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 
 # Run the development server
-DEBUG=True python3 manage.py runserver
+DEBUG=True python3 manage.py runserver 0.0.0.0:8000
