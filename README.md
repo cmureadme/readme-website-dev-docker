@@ -42,7 +42,14 @@ Do your development work in `readme-website`, in the `dev` branch. Whenever you 
 ```bash
 docker build --tag readme-website-dev .
 docker image prune
-docker run --rm -ti --network host readme-website-dev:latest
+docker run --rm -ti -p 8000:8000 readme-website-dev:latest
 ```
 
 Once you're ready to commit changes, double check you're on the `dev` branch, and `git push` from the `readme-website` directory.
+
+I have also made a simple shell script to do all of this for you if you are lazy.
+Run ```./rebuild.sh ``` if you are lazy.
+If you want to run the docker with a bash terminal run ```./rebuild.sh -b```.
+Then from within the bash terminal run ```../entrypoint.sh &``` to run the entrypoint script in the background.
+If for some reason you also need to rebuild the whole project (you shouldn't) you can run the rebuild script with the ```-r``` flag.
+```./rebuild.sh -r ```

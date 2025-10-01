@@ -2,6 +2,12 @@
 
 FROM python:3.13
 
+# Install dependencies first (only re-run if requirements.txt changes)
+WORKDIR /readme-website
+COPY readme-website/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Copy the website files to the container
 COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=staticfiles/ --exclude=venv/ --exclude=.env --exclude=db.sqlite3 --exclude=media/ readme-website /readme-website
 
@@ -11,10 +17,6 @@ WORKDIR /readme-website
 # Set environment variables to optimize Python
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-
-# Install dependencies
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
 
 # Populate sample data
 RUN chmod u+x data_populate.sh
