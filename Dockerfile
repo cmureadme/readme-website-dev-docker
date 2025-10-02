@@ -2,9 +2,6 @@
 
 FROM python:3.13
 
-# Copy the website files to the container
-COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=staticfiles/ --exclude=venv/ --exclude=.env --exclude=db.sqlite3 --exclude=media/ readme-website /readme-website
-
 # Set the working directory
 WORKDIR /readme-website
 
@@ -12,9 +9,15 @@ WORKDIR /readme-website
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+# Copy requirements
+COPY readme-website/requirements.txt /readme-website/
+
 # Install dependencies
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the website files to the container
+COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=staticfiles/ --exclude=venv/ --exclude=.env --exclude=db.sqlite3 --exclude=media/ readme-website /readme-website
 
 # Populate sample data
 RUN chmod u+x data_populate.sh
