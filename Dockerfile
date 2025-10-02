@@ -20,7 +20,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=staticfiles/ --exclude=venv/ --exclude=.env --exclude=db.sqlite3 --exclude=media/ readme-website /readme-website
 
 # Populate sample data
-RUN chmod u+x data_populate.sh
+COPY data_populate.sh .
+COPY db_sample.json .
+COPY zips ./zips
 RUN ./data_populate.sh
 
 # Copy entrypoint.sh
