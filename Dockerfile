@@ -2,6 +2,8 @@
 
 FROM python:3.13
 
+ARG sample_db
+
 # Set the working directory
 WORKDIR /readme-website
 
@@ -21,8 +23,8 @@ COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=static
 
 # Populate sample data
 COPY data_populate.sh .
-COPY db_sample.json .
-COPY zips ./zips
+COPY sample_dbs/${sample_db}/db_sample.json .
+COPY sample_dbs/${sample_db}/zips ./zips
 RUN ./data_populate.sh
 
 # Copy entrypoint.sh

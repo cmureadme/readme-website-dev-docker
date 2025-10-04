@@ -1,4 +1,6 @@
 readme-website/
+
 *.sqlite3
 zips/
 db_sample.json
+sample_dbs/
