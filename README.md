@@ -12,6 +12,13 @@ git clone https://github.com/cmureadme/readme-website
 cd readme-website
 git checkout dev
 cd ..
+chmod u+x ./load_sample.sh
+./load_sample.sh
+```
+From there you can choose what sample database you would like to develop with. 
+You only have to run this script once per database you want to use.
+
+```bash
 docker build --tag readme-website-dev .
 ```
 
@@ -33,8 +40,9 @@ Then from within the bash terminal run ```../entrypoint.sh &``` to run the entry
 If you are in the bash terminal you can then also do django mangement commands.
 Just write ```python3 manage.py``` followed by whatever command you are doing.
 Note that this will only apply to the current Docker image so when you rebuild the image any changes you make this way will go away.
-One helpful use for this is to run ```python3 manage.py createsuperuser```.
-This will create a one time superuser admin acount for you.
+
+On each building of this image a superuser named ```god``` is created with password ```him```.
+THIS IS ONLY CREATED ON THIS DEVELOPMENTAL IMAGE AND WILL NOT ACTUALLY WORK ON THE PRODUCTION SERVER.
 This is helpful if you are making changes to anything on the admin pannel (such as forms) and need to check to make sure you did it correctly.
 
 Once you're ready to commit changes, double check you're on the `dev` branch, and `git push` from the `readme-website` directory.
