@@ -7,7 +7,7 @@ local='sample_dbs'
 
 mkdir -p "${local}"
 
-samples_index=$(curl -s "${remote}" | grep -Po '<a href=".*">\K[a-zA-Z0-9_\-.]+(?=\.tar</a>)')
+samples_index=( $(curl -s "${remote}" | grep -Po '<a href=".*">\K[a-zA-Z0-9_\-.]+(?=\.tar</a>)') )
 count="${#samples_index[@]}"
 
 if [[ "$count" -eq 0 ]]; then

@@ -3,7 +3,8 @@
 set -e
 
 if [[ "$#" < 1 ]]; then
-    printf 'Usage: %s [sample_db] [command]\n' "$0" >&2
+    printf 'Usage: %s SAMPLE_DB [command]\n' "$0" >&2
+    exit 1
 fi
 
 # Remove old dev image
