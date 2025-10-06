@@ -8,6 +8,7 @@ if [[ "$#" < 1 ]]; then
 fi
 
 # Remove old dev image
+printf 'Removing old image...\n'
 docker rmi readme-website-dev:latest || true
 
 # Rebuild
