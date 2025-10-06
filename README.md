@@ -18,24 +18,14 @@ chmod u+x ./load_sample.sh
 From there you can choose what sample database you would like to develop with. 
 You only have to run this script once per database you want to use.
 
-```bash
-docker build --tag readme-website-dev .
-```
+Do your development work in `readme-website`, in the `dev` branch. 
+If you change how the database schema works (ie make changes to `models.py`) you need to run `python3 manage.py makemigrations` inside of the `readme-website` folder.
 
-Now, to run a local dev server on `http://localhost:8000`, run:
+Whenever you want to run your updated code, run the following where `database_name` is the name of the database you are working on:
 
-```bash
-docker run --rm -ti -p 8000:8000 readme-website-dev:latest
-```
+```./rebuild.sh database_name```
 
-To view your locally running site you can eaither go to `http://127.0.0.1:8000` or `localhost:8000` in your browser.
-
-
-Do your development work in `readme-website`, in the `dev` branch. Whenever you want to run your updated code, run the following:
-
-```./rebuild.sh ```
-
-If you want to run the docker with a bash terminal run ```./rebuild.sh bash```.
+If you want to run the docker with a bash terminal run ```./rebuild.sh database_name bash```.
 Then from within the bash terminal run ```../entrypoint.sh &``` to run the entrypoint script in the background.
 If you are in the bash terminal you can then also do django mangement commands.
 Just write ```python3 manage.py``` followed by whatever command you are doing.
@@ -44,6 +34,8 @@ Note that this will only apply to the current Docker image so when you rebuild t
 On each building of this image a superuser named ```god``` is created with password ```him```.
 THIS IS ONLY CREATED ON THIS DEVELOPMENTAL IMAGE AND WILL NOT ACTUALLY WORK ON THE PRODUCTION SERVER.
 This is helpful if you are making changes to anything on the admin pannel (such as forms) and need to check to make sure you did it correctly.
+
+To view your locally running site you can eaither go to `http://127.0.0.1:8000` or `localhost:8000` in your browser.
 
 Once you're ready to commit changes, double check you're on the `dev` branch, and `git push` from the `readme-website` directory.
 
