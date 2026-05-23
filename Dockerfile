@@ -12,7 +12,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Copy requirements
-COPY readme-website/requirements.txt /readme-website/
+COPY readme-website/requirements-host.txt /readme-website/requirements.txt
 
 # Install dependencies
 RUN pip install --upgrade pip
