@@ -23,7 +23,7 @@ COPY sample_dbs/${sample_db}/db.sqlite3 .
 COPY sample_dbs/${sample_db}/media ./media
 
 # Copy the website files to the container
-COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=staticfiles/ --exclude=venv/ --exclude=.env --exclude=db.sqlite3 --exclude=media/ readme-website /readme-website
+COPY --exclude=.git --exclude=.gitignore --exclude=__pycache__/ --exclude=staticfiles/ --exclude=venv/ --exclude=db.sqlite3 --exclude=media/ readme-website /readme-website
 
 # Copy entrypoint.sh
 COPY --chmod=755 ./entrypoint.sh /entrypoint.sh
